@@ -12,7 +12,7 @@ public class DemoBucles
      */
     public DemoBucles()
     {
-       Random generador = new Random();
+      generador = new Random();
     }
 
     /**
@@ -27,40 +27,9 @@ public class DemoBucles
      *  Usa bucles while
      */
     public int mayorPotencia2(int numero) {
-        int resul = 0;
-         while (numero >= 1){
-            if (numero >= 128){
-                numero = numero % (int)(Math.pow(2, 7));
-                resul = 128;
-            }
-            else if (numero >= 64){
-                numero = numero % (int)(Math.pow(2, 6));
-                resul = 64;
-            }
-            else if (numero >= 32){
-                numero = numero % (int)(Math.pow(2, 5));
-                resul = 32;
-            }
-            else if (numero >= 16){
-                numero = numero % (int)(Math.pow(2, 4));
-                resul = 16;
-            }
-            else if (numero >= 8){
-                numero = numero % (int)(Math.pow(2, 3));
-                resul = 8;
-            }
-            else if (numero >= 4){
-                numero = numero % (int)(Math.pow(2, 2));
-                resul = 4;
-            }
-            else if (numero >= 2){
-                numero = numero % (int)(Math.pow(2, 1));
-                resul = 2;
-            }
-            else if (numero >= 1){
-                numero = numero % (int)(Math.pow(2, 0));
-                resul = 1;
-            }
+        int resul = 1;
+         while (numero >= resul * 2){
+            resul *= 2;
         }
         return resul;
     }
@@ -81,43 +50,59 @@ public class DemoBucles
      *  64 =    64
      */
     public void escribirSumaPotencias(int numero) {
-        System.out.println(numero + "=");
+        System.out.printf("%6d =", numero);
+        int resul = 1;
+        int contador = 1;
         while (numero >= 1){
             if (numero >= 128){
-                numero = numero % (int)(Math.pow(2, 7));
-                System.out.println("128");
+                mayorPotencia2(numero);
+                resul = 128;
+                numero = numero % 128;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 64){
-                numero = numero % (int)(Math.pow(2, 6));
-                System.out.println("64");
+                mayorPotencia2(numero);
+                resul = 64;
+                numero = numero % 64;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 32){
-                numero = numero % (int)(Math.pow(2, 5));
-                System.out.println("32");
+                mayorPotencia2(numero);
+                resul = 32;
+                numero = numero % 32;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 16){
-                numero = numero % (int)(Math.pow(2, 4));
-                System.out.println("16");
+                mayorPotencia2(numero);
+                resul = 16;
+                numero = numero % 16;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 8){
-                numero = numero % (int)(Math.pow(2, 3));
-                System.out.println("8");
+                mayorPotencia2(numero);
+                resul = 8;
+                numero = numero % 8;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 4){
-                numero = numero % (int)(Math.pow(2, 2));
-                System.out.println("4");
+                mayorPotencia2(numero);
+                resul = 4;
+                numero = numero % 4;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 2){
-                numero = numero % (int)(Math.pow(2, 1));
-                System.out.println("2");
+                mayorPotencia2(numero);
+                resul = 2;
+                numero = numero % 2;
+                System.out.printf("%6d", resul);
             }
             else if (numero >= 1){
-                numero = numero % (int)(Math.pow(2, 0));
-                System.out.println("1");
+                mayorPotencia2(numero);
+                resul = 1;
+                numero = numero % 1;
+                System.out.printf("%6d", resul);
             }
         }
-         
-
     }
 
     /**
@@ -132,14 +117,16 @@ public class DemoBucles
      * 
      */
     public void generarAleatorios(int n) {
-        int aleatorio = generador.nextInt(256);
-        int contador = 1;
-        while (contador <= n && aleatorio != 0){
-            System.out.println("Nºs aleatorios como suma de potencias de 2");
+        int aleatorio = generador.nextInt(255);
+        int contador = 0;
+        System.out.println("Nºs aleatorios como suma de potencias de 2");
+        while (contador < n && aleatorio != 0){
+            System.out.println();
+            aleatorio = generador.nextInt(255);
             escribirSumaPotencias(aleatorio);
             contador ++;
         }
-        System.out.println("Bucle terminado porque se han generado ya " + contador + " aleatorios");
+        System.out.println("\nBucle terminado porque se han generado ya " + contador + " aleatorios");
     }
 
     /**
@@ -163,18 +150,21 @@ public class DemoBucles
      *   Usa bucles for
      */
     public void mostrarEscalera(int escalones, int alto, int ancho) {
-        for (int i = 1; i <= escalones; i ++){
+        int i = 1;
+        for (i = 1; i <= escalones; i ++){
+            System.out.println();
             int f = 1;
             for (f = 1; f <= alto; f ++){
-                System.out.println();
                 int g = 1;
-                for (g = 1; g <= ancho; g ++){
+                int h = 1;
+                for (g = 1; g <= alto; g ++){
                        escribirCaracter(ancho, ASTERISCO);
+                    }
+                for (h = 1; h <= alto; h ++){
+                       escribirCaracter(ancho, ESPACIO); ;
                     }
             }
         }
-
-         
 
     }
 
