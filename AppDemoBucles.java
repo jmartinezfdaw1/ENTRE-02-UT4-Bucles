@@ -34,9 +34,10 @@ public class AppDemoBucles
             }
          DemoBucles demoBucles = new DemoBucles();
          demoBucles.generarAleatorios(n);
-         //System.out.print("\u000C");
-         
-         //demoBucles.mostrarEscalera(6, 4, 12);
+         Utilidades utilidades = new Utilidades();
+         utilidades.hacerPausa();
+         utilidades.borrarPantalla();
+         demoBucles.mostrarEscalera(6, 4, 12);
          
          
     }

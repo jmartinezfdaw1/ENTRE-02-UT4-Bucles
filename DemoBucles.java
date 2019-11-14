@@ -53,53 +53,54 @@ public class DemoBucles
         System.out.printf("%6d =", numero);
         int resul = 1;
         int contador = 1;
-        while (numero >= 1){
-            if (numero >= 128){
-                mayorPotencia2(numero);
+        int aux = numero;
+        while (aux >= 1){
+            if (aux >= 128){
+                mayorPotencia2(aux);
                 resul = 128;
-                numero = numero % 128;
+                aux = aux % 128;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 64){
-                mayorPotencia2(numero);
+            else if (aux >= 64){
+                mayorPotencia2(aux);
                 resul = 64;
-                numero = numero % 64;
+                aux = aux % 64;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 32){
-                mayorPotencia2(numero);
+            else if (aux >= 32){
+                mayorPotencia2(aux);
                 resul = 32;
-                numero = numero % 32;
+                aux = aux % 32;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 16){
-                mayorPotencia2(numero);
+            else if (aux >= 16){
+                mayorPotencia2(aux);
                 resul = 16;
-                numero = numero % 16;
+                aux = aux % 16;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 8){
-                mayorPotencia2(numero);
+            else if (aux >= 8){
+                mayorPotencia2(aux);
                 resul = 8;
-                numero = numero % 8;
+                aux = aux % 8;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 4){
-                mayorPotencia2(numero);
+            else if (aux >= 4){
+                mayorPotencia2(aux);
                 resul = 4;
-                numero = numero % 4;
+                aux = aux % 4;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 2){
-                mayorPotencia2(numero);
+            else if (aux >= 2){
+                mayorPotencia2(aux);
                 resul = 2;
-                numero = numero % 2;
+                aux = aux % 2;
                 System.out.printf("%6d", resul);
             }
-            else if (numero >= 1){
-                mayorPotencia2(numero);
+            else if (aux >= 1){
+                mayorPotencia2(aux);
                 resul = 1;
-                numero = numero % 1;
+                aux = aux % 1;
                 System.out.printf("%6d", resul);
             }
         }
@@ -140,7 +141,7 @@ public class DemoBucles
         for (int contador = 1; contador <= n; contador ++){
              figura += caracter;
             }
-        System.out.println(figura);
+        System.out.printf(figura);
     }
 
     /**
@@ -150,22 +151,15 @@ public class DemoBucles
      *   Usa bucles for
      */
     public void mostrarEscalera(int escalones, int alto, int ancho) {
-        int i = 1;
-        for (i = 1; i <= escalones; i ++){
-            System.out.println();
-            int f = 1;
-            for (f = 1; f <= alto; f ++){
-                int g = 1;
-                int h = 1;
-                for (g = 1; g <= alto; g ++){
-                       escribirCaracter(ancho, ASTERISCO);
-                    }
-                for (h = 1; h <= alto; h ++){
-                       escribirCaracter(ancho, ESPACIO); ;
-                    }
+        int potencia = 0;
+        for (int i = 1; escalones >= i; i ++){
+            for (int f = 1; alto >= f; f ++){
+                escribirCaracter(ancho * potencia, ESPACIO);
+                escribirCaracter(ancho, ASTERISCO);
+                System.out.println();
             }
+            potencia ++;
         }
-
     }
 
 }
